@@ -48,7 +48,8 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO*
-        loginbg = FeaturedFunction.importImageView(new File("@..\\..\\pictures\\login.jpeg"));
+        loginbg = FeaturedFunction.importImageView(new File("C:\\Users\\ky94\\OneDrive\\Documents\\TIC-S2\\POO & JAVA\\panda_rents\\Location\\pictures\\carpic\\login.jpeg"));
+     
     }
 
     @FXML

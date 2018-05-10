@@ -15,13 +15,15 @@ import javafx.stage.Stage;
  * @author ky94
  */
 public class Location extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
+        System.out.println(System.getProperties());
+
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -32,5 +34,5 @@ public class Location extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
