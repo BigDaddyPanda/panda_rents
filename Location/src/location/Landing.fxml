@@ -1,18 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LandingController">
+<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="945.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LandingController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="90.0" style="-fx-background-color: #1f23a1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="90.0" prefHeight="48.0" prefWidth="510.0" style="-fx-background-color: #1f23a1;" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ScrollPane fx:id="displaySP" layoutX="90.0" layoutY="48.0" prefHeight="349.0" prefWidth="510.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0">
+      <ScrollPane fx:id="displaySP" layoutX="190.0" layoutY="126.0" prefHeight="409.0" prefWidth="755.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
          <content>
-            <TilePane fx:id="displayTP" alignment="CENTER" prefHeight="349.0" prefWidth="659.0" />
+            <TilePane fx:id="displayTP" alignment="CENTER" prefHeight="410.0" prefWidth="773.0" />
          </content>
       </ScrollPane>
+      <AnchorPane layoutX="190.0" prefHeight="126.0" prefWidth="785.0" style="-fx-background-image: #1f23a1;">
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="77.0" layoutX="673.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/userpic/boss.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="540.0" layoutY="49.0" text="Moudir Louzir">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="482.0" layoutY="100.0" prefHeight="26.0" prefWidth="185.0" promptText="Search a car" />
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="538.0" prefWidth="195.0" style="-fx-background-color: #1f23a1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#f2eaea" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action" wrappingWidth="102.07812118530273">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="36.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Customer" />
+            <Button layoutX="36.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Vehicle" />
+            <Text fill="#f2eaea" layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="102.07812118530273">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Separator layoutX="15.0" layoutY="52.0" prefHeight="0.0" prefWidth="162.0" />
+            <ScrollPane layoutX="16.0" layoutY="245.0" prefHeight="281.0" prefWidth="162.0" style="-fx-background-color: transparent;">
+               <content>
+                  <TableView prefHeight="294.0" prefWidth="158.0">
+                    <columns>
+                      <TableColumn prefWidth="26.399993896484375" text="#" />
+                      <TableColumn prefWidth="131.19999923706055" text="Name" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <Button layoutX="36.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Add Employee" />
+            <TextField layoutX="16.0" layoutY="215.0" prefHeight="26.0" prefWidth="162.0" promptText="Search a car" text="Filter clients" />
+         </children></Pane>
+      <Pane fx:id="newclientP" layoutX="280.0" layoutY="117.0" prefHeight="341.0" prefWidth="422.0" style="-fx-background-color: #d1d2d2;">
+         <children>
+            <TextField layoutX="24.0" layoutY="48.0" prefHeight="25.0" prefWidth="178.0" promptText="Immatricule" />
+            <TextField layoutX="24.0" layoutY="94.0" prefHeight="25.0" prefWidth="178.0" promptText="Constructor" />
+            <TextField layoutX="24.0" layoutY="144.0" prefHeight="25.0" prefWidth="178.0" promptText="Model" />
+            <TextField layoutX="24.0" layoutY="196.0" prefHeight="25.0" prefWidth="49.0" promptText="Speed" />
+            <ColorPicker layoutX="86.0" layoutY="196.0" prefHeight="25.0" prefWidth="114.0" />
+            <RadioButton layoutX="30.0" layoutY="251.0" mnemonicParsing="false" text="Diesel" />
+            <RadioButton layoutX="92.0" layoutY="251.0" mnemonicParsing="false" text="Gas" />
+            <RadioButton layoutX="143.0" layoutY="251.0" mnemonicParsing="false" text="Electric" />
+            <AnchorPane layoutX="219.0" layoutY="62.0" prefHeight="168.0" prefWidth="178.0" style="-fx-background-color: grey;">
+               <children>
+                  <ImageView fitHeight="168.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="268.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Photo" />
+            <ButtonBar layoutX="1.0" layoutY="291.0" prefHeight="51.0" prefWidth="400.0">
+              <buttons>
+                <Button mnemonicParsing="false" style="-fx-background-color: #26a69a;" text="Confirmer" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: #ef9a9a;" text="Annuler" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -5,13 +5,24 @@
  */
 package location;
 
+import entities.Person;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -21,20 +32,45 @@ import javafx.scene.control.Label;
 public class LoginController implements Initializable {
 
     @FXML
-    private Button button;
+    private ImageView loginbg;
     @FXML
-    private Label label;
+    private TextField pwTF;
+    @FXML
+    private TextField usernameTF;
+    @FXML
+    private Button loginBtn;
+    @FXML
+    private AnchorPane loginAP;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // TODO*
+        loginbg = FeaturedFunction.importImageView(new File("@..\\..\\pictures\\login.jpeg"));
+    }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void login(ActionEvent event) {
+        if (Person.authentificate(usernameTF.getText(), pwTF.getText())) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Landing.fxml"));
+            Parent page2 = null;
+            try {
+                page2 = fxmlLoader.load();
+            } catch (IOException ex) {
+                System.err.println("FXMLLoad " + ex);
+            }
+
+            Scene scene2 = new Scene(page2);
+            Stage app_stage = (Stage) loginAP.getScene().getWindow();
+
+            app_stage.setTitle("Welcome to PANDA-AIRLINES");
+            app_stage.setScene(scene2);
+            app_stage.show();
+        } else {
+            System.out.println("Bad entry");
+        }
     }
-    
+
 }

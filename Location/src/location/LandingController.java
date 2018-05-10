@@ -46,7 +46,7 @@ public class LandingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        String path = "C:\\Users\\ky94\\OneDrive\\Documents\\TIC-S2\\POO & JAVA\\FinalBoss\\Location\\pictures";
+        String path = "@..\\..\\pictures\\carpic";
         displaySP.isResizable();
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
@@ -54,7 +54,7 @@ public class LandingController implements Initializable {
         for (final File file : listOfFiles) {
             VBox v = new VBox();
             ImageView imageView;
-            imageView = createImageView(file);
+            imageView = FeaturedFunction.createImageView(file);
             Button b = new Button("Rent This!");
             v.getChildren().addAll(imageView,b);
             displayTP.getChildren().addAll(v);
@@ -63,27 +63,4 @@ public class LandingController implements Initializable {
         displaySP.setContent(displayTP);
     }    
     
-    private ImageView createImageView(final File imageFile) {
-        // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
-        // The last two arguments are: preserveRatio, and use smooth (slower)
-        // resizing
-
-        ImageView imageView = null;
-        try {
-            final Image image = new Image(new FileInputStream(imageFile), 250, 170, true,
-                    true);
-            imageView = new ImageView(image);
-            imageView.setFitWidth(250);
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    System.out.println("Hello");
-                }
-            });
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return imageView;
-    }
 }

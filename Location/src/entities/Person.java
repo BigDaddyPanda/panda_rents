@@ -25,11 +25,11 @@ public class Person {
 
     public static boolean authentificate(String login, String password) {
         try {
-            PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM personnel WHERE login = '" + login + "' AND password= '" + password + "'");
+            PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM persons WHERE username = '" + login + "' AND password= '" + password + "'");
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Auth.USERNAME = rs.getString("nom") + " " + rs.getString("prenom");
-                Auth.USERIMAGE = rs.getString("idpersonnel");
+                Auth.USERNAME = rs.getString("name") + " " + rs.getString("fname");
+                Auth.USERIMAGE = rs.getString("id_person");
                 Auth.ISADMIN = rs.getBoolean("isadmin");
                 return true;
             }
