@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="293.0" prefWidth="481.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="location.LoginController">
+    <children>
+      <ImageView fitHeight="301.0" fitWidth="547.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../pictures/login.jpeg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="285.0" layoutY="75.0" opacity="0.84" prefHeight="178.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;">
+         <children>
+            <JFXTextField alignment="CENTER" labelFloat="true" layoutX="17.0" layoutY="23.0" promptText="username" />
+            <JFXButton layoutX="40.0" layoutY="139.0" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #192556;" textFill="#8d8d8d" />
+            <JFXPasswordField alignment="CENTER" labelFloat="true" layoutX="17.0" layoutY="89.0" promptText="Password" />
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
