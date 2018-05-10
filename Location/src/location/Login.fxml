@@ -2,15 +2,16 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" fx:id="loginAP" prefHeight="293.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LoginController">
+<AnchorPane id="AnchorPane" fx:id="loginAP" maxHeight="317.0" maxWidth="500.0" prefHeight="317.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LoginController">
     <children>
-      <ImageView fx:id="loginbg" fitHeight="301.0" fitWidth="547.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="loginbg" cache="true" fitHeight="317.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../pictures/carpic/login.jpeg" />
          </image>
@@ -18,10 +19,10 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Pane layoutX="285.0" layoutY="75.0" opacity="0.84" prefHeight="178.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;" AnchorPane.rightAnchor="28.600006103515625">
+      <Pane layoutX="299.0" layoutY="69.0" opacity="0.84" prefHeight="178.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;" AnchorPane.rightAnchor="40.0">
          <children>
-            <TextField fx:id="pwTF" layoutX="10.0" layoutY="89.0" />
-            <TextField fx:id="usernameTF" layoutX="10.0" layoutY="37.0" />
+            <TextField fx:id="usernameTF" layoutX="10.0" layoutY="37.0" promptText="Login" />
+            <PasswordField fx:id="pwTF" layoutX="10.0" layoutY="89.0" promptText="Password" />
             <Button fx:id="loginBtn" layoutX="40.0" layoutY="139.0" onAction="#login" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #192556;" text="Login" textFill="WHITE" />
          </children>
       </Pane>

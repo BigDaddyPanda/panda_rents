@@ -103,21 +103,21 @@ public class LandingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        String path = "@..\\..\\pictures\\carpic";
-        displaySP.isResizable();
-        File folder = new File(path);
-        File[] listOfFiles = folder.listFiles();
-
-        for (final File file : listOfFiles) {
-            VBox v = new VBox();
-            ImageView imageView;
-            imageView = FeaturedFunction.createImageView(file);
-            Button b = new Button("Rent This!");
-            v.getChildren().addAll(imageView, b);
-            displayTP.getChildren().addAll(v);
-        }
-        displaySP.setFitToWidth(true);
-        displaySP.setContent(displayTP);
+//        String path = "@..\\..\\pictures\\carpic";
+//        displaySP.isResizable();
+//        File folder = new File(path);
+//        File[] listOfFiles = folder.listFiles();
+//
+//        for (final File file : listOfFiles) {
+//            VBox v = new VBox();
+//            ImageView imageView;
+//            imageView = FeaturedFunction.createImageView(file);
+//            Button b = new Button("Rent This!");
+//            v.getChildren().addAll(imageView, b);
+//            displayTP.getChildren().addAll(v);
+//        }
+//        displaySP.setFitToWidth(true);
+//        displaySP.setContent(displayTP);
     }
 
     @FXML

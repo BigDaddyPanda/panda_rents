@@ -29,7 +29,7 @@
    <children>
       <AnchorPane fx:id="mainPane">
          <children>
-            <ScrollPane fx:id="displaySP" layoutX="196.0" layoutY="126.0" prefHeight="409.0" prefWidth="854.0">
+            <ScrollPane fx:id="displaySP" layoutX="196.0" layoutY="126.0" prefHeight="409.0" prefWidth="854.0" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="2.0">
                <content>
                   <TilePane fx:id="displayTP" alignment="CENTER" prefHeight="420.0" prefWidth="847.0">
                      <children>
@@ -289,7 +289,7 @@
                   </TilePane>
                </content>
             </ScrollPane>
-            <AnchorPane layoutX="196.0" prefHeight="126.0" prefWidth="856.0" style="-fx-background-color: GainsBoro;">
+            <AnchorPane layoutX="196.0" prefHeight="126.0" prefWidth="856.0" style="-fx-background-color: GainsBoro;" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fx:id="userIV" fitHeight="71.0" fitWidth="77.0" layoutX="750.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -311,7 +311,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <Pane prefHeight="539.0" prefWidth="195.0" style="-fx-background-color: #1f23a1;">
+            <Pane prefHeight="539.0" prefWidth="195.0" style="-fx-background-color: #1f23a1;" AnchorPane.leftAnchor="0.0">
                <children>
                   <Text fill="#f2eaea" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action" wrappingWidth="102.07812118530273">
                      <font>

@@ -14,14 +14,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -34,7 +37,7 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView loginbg;
     @FXML
-    private TextField pwTF;
+    private PasswordField pwTF;
     @FXML
     private TextField usernameTF;
     @FXML
@@ -48,13 +51,19 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO*
-        loginbg = FeaturedFunction.importImageView(new File("C:\\Users\\ky94\\OneDrive\\Documents\\TIC-S2\\POO & JAVA\\panda_rents\\Location\\pictures\\carpic\\login.jpeg"));
-     
+        loginAP.getChildren().remove(loginbg);
+        loginbg = FeaturedFunction.createImageView(
+                new File("C:\\Users\\ky94\\OneDrive\\Documents\\TIC-S2\\POO & JAVA\\panda_rents\\Location\\pictures\\carpic\\login.jpeg"),
+                 500, 317);
+        loginAP.getChildren().add(0, loginbg);
+        loginbg.setCache(true);
+
     }
 
     @FXML
     private void login(ActionEvent event) {
         if (Person.authentificate(usernameTF.getText(), pwTF.getText())) {
+            System.out.println(usernameTF.getText()+"+"+ pwTF.getText());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Landing.fxml"));
             Parent page2 = null;
             try {
@@ -62,14 +71,19 @@ public class LoginController implements Initializable {
             } catch (IOException ex) {
                 System.err.println("FXMLLoad " + ex);
             }
-
+            
             Scene scene2 = new Scene(page2);
             Stage app_stage = (Stage) loginAP.getScene().getWindow();
 
-            app_stage.setTitle("Welcome to PANDA-AIRLINES");
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            app_stage.setX(150);
+            app_stage.setY(50);
+            app_stage.setResizable(false);
+            app_stage.setTitle("Welcome to PANDA-RENTZ");
             app_stage.setScene(scene2);
             app_stage.show();
         } else {
+            usernameTF.getStylesheets().add("-fx-border-color:red");
             System.out.println("Bad entry");
         }
     }

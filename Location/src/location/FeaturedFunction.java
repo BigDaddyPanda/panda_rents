@@ -19,29 +19,18 @@ import javafx.scene.input.MouseEvent;
  */
 public class FeaturedFunction {
 
-    public static ImageView importImageView(final File imageFile) {
-        ImageView imageView = null;
-        try {
-            final Image image = new Image(new FileInputStream(imageFile));
-            imageView = new ImageView(image);
-            imageView.setFitWidth(250);
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return imageView;
-    }
 
-    public static ImageView createImageView(final File imageFile) {
+    public static ImageView createImageView(final File imageFile,double a,double b) {
         // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
         // The last two arguments are: preserveRatio, and use smooth (slower)
         // resizing
 
         ImageView imageView = null;
         try {
-            final Image image = new Image(new FileInputStream(imageFile), 250, 170, true,
+            final Image image = new Image(new FileInputStream(imageFile), a, b, true,
                     true);
             imageView = new ImageView(image);
-            imageView.setFitWidth(250);
+            imageView.setFitWidth(a);
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
                 @Override
