@@ -12,5 +12,6 @@ package dbconnexion;
 public class Auth {
     public static String USERNAME,USERIMAGE;
     public static boolean ISADMIN;
+
     
 }

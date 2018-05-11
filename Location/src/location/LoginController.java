@@ -52,9 +52,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO*
         loginAP.getChildren().remove(loginbg);
-        loginbg = FeaturedFunction.createImageView(
-                new File("C:\\Users\\ky94\\OneDrive\\Documents\\TIC-S2\\POO & JAVA\\panda_rents\\Location\\pictures\\carpic\\login.jpeg"),
-                 500, 317);
+        loginbg = FeaturedFunction.createImageView("carpic/login.jpeg",500, 317);
         loginAP.getChildren().add(0, loginbg);
         loginbg.setCache(true);
 
@@ -69,7 +67,7 @@ public class LoginController implements Initializable {
             try {
                 page2 = fxmlLoader.load();
             } catch (IOException ex) {
-                System.err.println("FXMLLoad " + ex);
+                System.err.println("FXMLLoad Faggot");
             }
             
             Scene scene2 = new Scene(page2);

@@ -29,8 +29,9 @@ public class Person {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Auth.USERNAME = rs.getString("name") + " " + rs.getString("fname");
-                Auth.USERIMAGE = rs.getString("id_person");
+                Auth.USERIMAGE = rs.getString("image");
                 Auth.ISADMIN = rs.getBoolean("isadmin");
+                System.out.println(Auth.USERNAME);
                 return true;
             }
         } catch (SQLException e) {

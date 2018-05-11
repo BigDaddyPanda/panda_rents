@@ -5,6 +5,7 @@
  */
 package location;
 
+import dbconnexion.Auth;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -96,6 +97,10 @@ public class LandingController implements Initializable {
     private AnchorPane userImageAP;
     @FXML
     private PasswordField passwordTF;
+    @FXML
+    private AnchorPane userAP;
+    @FXML
+    private Pane userimagePane;
 
     /**
      * Initializes the controller class.
@@ -103,21 +108,21 @@ public class LandingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        String path = "@..\\..\\pictures\\carpic";
+        userNameLabel.setText(Auth.USERNAME);
+        userIV=FeaturedFunction.createImageView("userpic/boss.png",70   , 70);
+        userimagePane.getChildren().add(userIV);
 //        displaySP.isResizable();
-//        File folder = new File(path);
-//        File[] listOfFiles = folder.listFiles();
-//
-//        for (final File file : listOfFiles) {
-//            VBox v = new VBox();
-//            ImageView imageView;
-//            imageView = FeaturedFunction.createImageView(file);
-//            Button b = new Button("Rent This!");
-//            v.getChildren().addAll(imageView, b);
-//            displayTP.getChildren().addAll(v);
-//        }
-//        displaySP.setFitToWidth(true);
-//        displaySP.setContent(displayTP);
+        
+        String path = "@..\\..\\pictures\\carpic";
+        File folder = new File(path);
+        File[] listOfFiles = folder.listFiles();
+
+        for (final File file : listOfFiles) {
+            VBox v = defaultCarPreviewVB;
+            System.out.println(defaultCarPreviewVB.getChildren().toString());
+        }
+        displaySP.setFitToWidth(true);
+        displaySP.setContent(displayTP);
     }
 
     @FXML

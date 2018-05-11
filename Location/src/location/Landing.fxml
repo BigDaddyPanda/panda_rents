@@ -33,41 +33,30 @@
                <content>
                   <TilePane fx:id="displayTP" alignment="CENTER" prefHeight="420.0" prefWidth="847.0">
                      <children>
-                        <VBox fx:id="defaultCarPreviewVB" prefHeight="170.0" prefWidth="183.0" style="-fx-background-color: black;">
+                        <VBox fx:id="defaultCarPreviewVB" prefHeight="223.0" prefWidth="205.0" style="-fx-background-color: black;">
                            <TilePane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </TilePane.margin>
                            <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="107.0" prefWidth="216.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
+                              <Label fx:id="carNameLabel" prefHeight="30.0" prefWidth="264.0" style="-fx-background-color: white;" text="Ford-Mustang">
+                                 <font>
+                                    <Font name="System Bold Italic" size="20.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="previewCarIV" fitHeight="150.0" fitWidth="263.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../../pictures/carpic/nocar.jpg" />
+                                 </image>
+                              </ImageView>
+                              <BorderPane prefHeight="43.0" prefWidth="239.0" style="-fx-background-color: Grey;">
                                  <left>
                                     <Button fx:id="modifyCarBtn" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
                                  </left>
                                  <right>
-                                    <Button fx:id="rentCarBtn" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
+                                    <Button fx:id="rentCarBtn" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
                                  </right>
                                  <center>
                                     <RadioButton fx:id="isRent" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
@@ -75,7 +64,7 @@
                               </BorderPane>
                            </children>
                         </VBox>
-                        <VBox fx:id="defaultCarPreviewVB1" prefHeight="223.0" prefWidth="237.0" style="-fx-background-color: black;">
+                        <VBox fx:id="defaultCarPreviewVB1" prefHeight="223.0" prefWidth="237.0" style="-fx-background-color: black;" visible="false">
                            <children>
                               <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
                                  <children>
@@ -91,7 +80,7 @@
                                     <Insets />
                                  </VBox.margin>
                                  <children>
-                                    <ImageView fx:id="previewCarIV1" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                                    <ImageView fx:id="previewCarIV1" fitHeight="140.0" fitWidth="250.0" layoutX="5.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
                                        <viewport>
                                           <Rectangle2D />
                                        </viewport>
@@ -117,190 +106,30 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </TilePane.margin>
                         </VBox>
-                        <VBox fx:id="defaultCarPreviewVB2" prefHeight="223.0" prefWidth="237.0" style="-fx-background-color: black;">
-                           <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel2" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="145.0" prefWidth="237.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV2" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
-                                 <left>
-                                    <Button fx:id="modifyCarBtn2" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Button fx:id="rentCarBtn2" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <center>
-                                    <RadioButton fx:id="isRent2" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </children>
-                           <TilePane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </TilePane.margin>
-                        </VBox>
-                        <VBox fx:id="defaultCarPreviewVB3" prefHeight="170.0" prefWidth="183.0" style="-fx-background-color: black;">
-                           <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel3" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="107.0" prefWidth="216.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV3" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
-                                 <left>
-                                    <Button fx:id="modifyCarBtn3" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Button fx:id="rentCarBtn3" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <center>
-                                    <RadioButton fx:id="isRent3" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </children>
-                           <TilePane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </TilePane.margin>
-                        </VBox>
-                        <VBox fx:id="defaultCarPreviewVB4" prefHeight="170.0" prefWidth="183.0" style="-fx-background-color: black;">
-                           <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel4" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="107.0" prefWidth="216.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV4" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
-                                 <left>
-                                    <Button fx:id="modifyCarBtn4" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Button fx:id="rentCarBtn4" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <center>
-                                    <RadioButton fx:id="isRent4" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </children>
-                           <TilePane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </TilePane.margin>
-                        </VBox>
-                        <VBox fx:id="defaultCarPreviewVB5" prefHeight="170.0" prefWidth="183.0" style="-fx-background-color: black;">
-                           <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel5" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="107.0" prefWidth="216.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV5" fitHeight="143.0" fitWidth="262.0" layoutX="17.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
-                                 <left>
-                                    <Button fx:id="modifyCarBtn5" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Button fx:id="rentCarBtn5" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <center>
-                                    <RadioButton fx:id="isRent5" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </children>
-                           <TilePane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </TilePane.margin>
-                        </VBox>
                      </children>
                   </TilePane>
                </content>
             </ScrollPane>
             <AnchorPane layoutX="196.0" prefHeight="126.0" prefWidth="856.0" style="-fx-background-color: GainsBoro;" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fx:id="userIV" fitHeight="71.0" fitWidth="77.0" layoutX="750.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../pictures/userpic/boss.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="userNameLabel" layoutX="580.0" layoutY="46.0" text="Mr. Moudir Louzir">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane fx:id="userAP" layoutX="374.0" layoutY="26.0" prefHeight="71.0" prefWidth="447.0" AnchorPane.rightAnchor="50.0">
+                     <children>
+                        <Pane fx:id="userimagePane" layoutX="376.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fx:id="userIV" fitHeight="71.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../pictures/userpic/boss.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label fx:id="userNameLabel" layoutY="20.0" text="Mr Moudir Louzir" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                   <TextField layoutX="392.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Series: RX-8" />
                   <TextField layoutX="27.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Immatricule: ie 42TN069" />
                   <TextField layoutX="208.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Brand: ie Ford" />

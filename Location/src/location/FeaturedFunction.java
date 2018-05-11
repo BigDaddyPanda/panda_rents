@@ -20,11 +20,11 @@ import javafx.scene.input.MouseEvent;
 public class FeaturedFunction {
 
 
-    public static ImageView createImageView(final File imageFile,double a,double b) {
+    public static ImageView createImageView(String src,double a,double b) {
         // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
         // The last two arguments are: preserveRatio, and use smooth (slower)
         // resizing
-
+        File imageFile=new File("C:/Users/ky94/OneDrive/Documents/TIC-S2/POO & JAVA/panda_rents/Location/pictures/"+src);
         ImageView imageView = null;
         try {
             final Image image = new Image(new FileInputStream(imageFile), a, b, true,
