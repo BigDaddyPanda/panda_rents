@@ -34,7 +34,7 @@ public class Display {
                         rs.getBoolean("isAdmin")));
             }
         } catch (SQLException e) {
-            System.out.println("Bad kittens not doing their jobs");
+            System.out.println("Bad kittens not doing their jobs load_Persons");
         }
         return P;
     }
@@ -42,7 +42,7 @@ public class Display {
     public static ArrayList<Person> load_Renters() {
         ArrayList<Person> P = new ArrayList<>();
         try {
-            PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM persons WHERE id_person in (SELECT id_person from rent where rent.id_person=vehicles.id_person )");
+            PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM persons WHERE id_person in (SELECT id_person from rent where rent.id_person=persons.id_person )");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 P.add(new Person(rs.getString("id_person"),
@@ -56,7 +56,7 @@ public class Display {
                         rs.getBoolean("isAdmin")));
             }
         } catch (SQLException e) {
-            System.out.println("Bad kittens not doing their jobs");
+            System.out.println("Bad kittens not doing their jobs at load_Renters");
         }
         return P;
     }
@@ -85,7 +85,7 @@ public class Display {
                         rs.getString("image")));
             }
         } catch (SQLException e) {
-            System.out.println("Bad kittens not doing their jobs");
+            System.out.println("Bad kittens not doing their jobs at load_Available_Persons");
         }
         return A;
     }
@@ -108,7 +108,7 @@ public class Display {
                 );
             }
         } catch (SQLException e) {
-            System.out.println("Bad kittens not doing their jobs");
+            System.out.println("Bad kittens not doing their jobs loadRentedCars");
         }
         return A;
     }

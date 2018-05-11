@@ -19,12 +19,24 @@ import javafx.scene.input.MouseEvent;
  */
 public class FeaturedFunction {
 
+    public static Image createImage(String src, double a, double b) {
+        File imageFile = new File("C:/Users/ky94/OneDrive/Documents/TIC-S2/POO & JAVA/panda_rents/Location/pictures/" + src);
 
-    public static ImageView createImageView(String src,double a,double b) {
+        try {
+            return new Image(new FileInputStream(imageFile), a, b, true, true);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("SDQSKDKSDN");
+        return null;
+    }
+
+    public static ImageView createImageView(String src, double a, double b) {
         // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
         // The last two arguments are: preserveRatio, and use smooth (slower)
         // resizing
-        File imageFile=new File("C:/Users/ky94/OneDrive/Documents/TIC-S2/POO & JAVA/panda_rents/Location/pictures/"+src);
+        File imageFile = new File("C:/Users/ky94/OneDrive/Documents/TIC-S2/POO & JAVA/panda_rents/Location/pictures/" + src);
         ImageView imageView = null;
         try {
             final Image image = new Image(new FileInputStream(imageFile), a, b, true,

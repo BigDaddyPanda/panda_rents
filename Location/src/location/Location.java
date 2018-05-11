@@ -30,6 +30,7 @@ public class Location extends Application {
         stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.setTitle("Welcome To PandaRentz");
         
         stage.show();
     }

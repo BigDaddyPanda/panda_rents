@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -21,6 +23,8 @@ import java.util.Date;
 public class Person {
 
     String id_person, name, fname, phone, username, password, image;
+    SimpleStringProperty FullName;
+    SimpleStringProperty Adminship;
     Date birth;
     boolean isAdmin;
 
@@ -34,6 +38,11 @@ public class Person {
         this.image = image;
         this.birth = birth;
         this.isAdmin = isAdmin;
+        FullName = new SimpleStringProperty(name + " " + fname);
+        Adminship = new SimpleStringProperty("C");
+        if (isAdmin) {
+            Adminship = new SimpleStringProperty("A");
+        }
     }
 
     @Override
@@ -59,9 +68,26 @@ public class Person {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println("Bad kittens not doing their jobs");
+            System.out.println("XZS");
+            e.printStackTrace();
         }
         return false;
+    }
+
+    public String getFullName() {
+        return FullName.get();
+    }
+
+    public void setFullName(String FullName) {
+        this.FullName = new SimpleStringProperty(FullName);
+    }
+
+    public String getAdminship() {
+        return Adminship.get();
+    }
+
+    public void setAdminship(String Adminship) {
+        this.Adminship = new SimpleStringProperty(Adminship);
     }
 
     public String getId_person() {

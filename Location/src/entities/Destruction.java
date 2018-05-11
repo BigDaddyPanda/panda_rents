@@ -9,6 +9,6 @@ package entities;
  *
  * @author ky94
  */
-public class Removal {
+public class Destruction {
     
 }

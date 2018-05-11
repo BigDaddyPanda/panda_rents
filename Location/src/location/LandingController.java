@@ -10,10 +10,13 @@ import entities.Car;
 import entities.Creation;
 import entities.Display;
 import entities.Person;
+import entities.Rental;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -71,7 +75,7 @@ public class LandingController implements Initializable {
     @FXML
     private Pane personPane;
     @FXML
-    private RadioButton isRent, dieselRB, gazRB, electricRB, isMrRB, isMrsRB;
+    private RadioButton dieselRB, gazRB, electricRB, isMrRB, isMrsRB;
 
     @FXML
     private CheckBox isAdminCB;
@@ -90,7 +94,7 @@ public class LandingController implements Initializable {
     @FXML
     private TableView<Person> personsTV;
     @FXML
-    private TableColumn<Person, RadioButton> isAdminTC;
+    private TableColumn<Person, String> isAdminTC;
     @FXML
     private TableColumn<Person, String> personNameTC;
     @FXML
@@ -102,9 +106,9 @@ public class LandingController implements Initializable {
     @FXML
     private Pane rentaCarPane;
     @FXML
-    private ChoiceBox<?> renterCB;
+    private ChoiceBox<String> renterCB;
     @FXML
-    private ChoiceBox<?> availableCarsCB;
+    private ChoiceBox<String> availableCarsCB;
     @FXML
     private DatePicker rentStartDate;
     @FXML
@@ -120,25 +124,41 @@ public class LandingController implements Initializable {
     @FXML
     private Button confirmRent1;
     @FXML
-    private BorderPane buttomBtns;
-    @FXML
     private AnchorPane LANDINGAP;
     @FXML
     private TextField seatsTF;
 
+    String imageurl;
     /**
      * Initializes the controller class.
      */
+    ArrayList<Person> P, AllP, AP;
+    ArrayList<Car> AllC, C, AC, RC;
+    @FXML
+    private Button addRent;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         userNameLabel.setText(Auth.USERNAME);
         userIV = FeaturedFunction.createImageView("userpic/boss.png", 70, 70);
         userimagePane.getChildren().add(userIV);
-        ArrayList<Person> P = Display.load_Persons();
-        ArrayList<Car> C = Display.loadAllCars();
-        ArrayList<Car> RC = Display.loadRentedCars();
+        P = Display.load_Persons();
+        AllP = P;
+        AP = Display.load_Available_Persons();
+        C = Display.loadAllCars();
+        AC = Display.load_Available_Cars();
+        AllC = C;
 
+        RC = Display.loadRentedCars();
+        for (Person p : AP) {
+            renterCB.getItems().addAll(p.getFullName()+ ":" + p.getId_person());
+
+        }
+        for (Car c : AC) {
+            availableCarsCB.getItems().addAll(c.getModele() + ":" + c.getId_vehicle());
+
+        }
 //        displaySP.isResizable();
 //
 //        String path = "@..\\..\\pictures\\carpic";
@@ -148,9 +168,19 @@ public class LandingController implements Initializable {
 //            VBox v = defaultCarPreviewVB;
 //            System.out.println(defaultCarPreviewVB.getChildren().toString());
 //        }
-        for (Person p : P) {
-            displayTP.getChildren().addAll(defaultCarPreviewVB);
-        }
+//        for (Car c : C) {
+//            VBox v = new VBox();
+//            v = defaultCarPreviewVB;
+//            ((Button) (v.getChildren().get(0))).setVisible(Auth.ISADMIN);
+//            ((Label) (v.getChildren().get(1))).setText(c.getConstructeur() + " " + c.getModele());
+//            ((Button) (v.getChildren().get(3))).setDisable(RC.contains(c));
+//        }
+        isAdminTC.setCellValueFactory(new PropertyValueFactory<Person, String>("Adminship"));
+        ObservableList<Person> PersonsA = FXCollections.observableArrayList(P);
+        personNameTC.setCellValueFactory(new PropertyValueFactory<Person, String>("FullName"));
+        ObservableList<Person> PersonsN = FXCollections.observableArrayList(P);
+        personsTV.getItems().addAll(PersonsA);
+        personsTV.getItems().addAll(PersonsN);
         displaySP.setFitToWidth(true);
         displaySP.setContent(displayTP);
     }
@@ -164,11 +194,24 @@ public class LandingController implements Initializable {
     }
 
     @FXML
+    private void addRent(ActionEvent event) {
+        personPane.setVisible(false);
+        personPane.setDisable(true);
+        carPane.setVisible(false);
+        carPane.setDisable(true);
+        rentaCarPane.setVisible(true);
+        rentaCarPane.setDisable(false);
+        mainPane.setOpacity(0.40);
+    }
+
+    @FXML
     private void addPerson(ActionEvent event) {
         personPane.setVisible(true);
         personPane.setDisable(false);
         carPane.setVisible(false);
         carPane.setDisable(false);
+        rentaCarPane.setVisible(false);
+        rentaCarPane.setDisable(false);
         mainPane.setOpacity(0.40);
 
     }
@@ -179,6 +222,8 @@ public class LandingController implements Initializable {
         carPane.setDisable(false);
         personPane.setVisible(false);
         personPane.setDisable(false);
+        rentaCarPane.setVisible(false);
+        rentaCarPane.setDisable(false);
         mainPane.setOpacity(0.40);
 //        mainPane.setDisable(true);
 //        mainPane.setDisable(true);
@@ -186,6 +231,13 @@ public class LandingController implements Initializable {
 
     @FXML
     private void filterClients(ActionEvent event) {
+        P.clear();
+        for (Person p : AllP) {
+            if ((clientFilterTF.getText() == p.getName()) || (clientFilterTF.getText() == p.getName())) {
+                P.add(p);
+            }
+        }
+
     }
 
     @FXML
@@ -200,7 +252,6 @@ public class LandingController implements Initializable {
             imageurl = file.getName();
         }
     }
-    String imageurl;
 
     @FXML
     private void confirmCar(ActionEvent event) {
@@ -223,19 +274,30 @@ public class LandingController implements Initializable {
 
         mainPane.setOpacity(1.0);
         mainPane.setDisable(false);
-
         carPane.setDisable(true);
         carPane.setVisible(false);
+        rentaCarPane.setDisable(true);
+        rentaCarPane.setVisible(false);
         personPane.setDisable(true);
         personPane.setVisible(false);
     }
 
     @FXML
     private void filterCarBy(ActionEvent event) {
+
     }
 
     @FXML
     private void confirmRent(ActionEvent event) {
+        float x = Float.parseFloat(rentPrice.getText());
+        System.out.println(renterCB.getSelectionModel().getSelectedItem().split(":")[1]+"-"
+                + availableCarsCB.getSelectionModel().getSelectedItem().split(":")[1]+"-"
+                + rentStartDate.getValue().toString().length()+"-" + rentStartDate.getValue().toString());
+        System.out.println(Creation.addRental(
+                new Rental(renterCB.getSelectionModel().getSelectedItem(),
+                        availableCarsCB.getSelectionModel().getSelectedItem(),
+                        rentStartDate.toString(), rentStartDate.toString(), x, x / 10))
+        );
     }
 
     @FXML

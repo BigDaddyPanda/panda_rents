@@ -91,8 +91,8 @@ public class Creation {
             String req = "INSERT INTO `rent` (`id_person`, `id_vehicle`, `start`, `end`, `price`, `fees`)"
                     + " VALUES ('?', '?', '?', '?', '?', '?')";
             Statement st = db_cnx.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from rent where id_person ='" + e.getId_vehicle() + "'"
-                    + "AND id_vehicle='"+e.getId_vehicle()+"' AND end>'"+e.getStart()+"'");
+            ResultSet rs = st.executeQuery("select * from rent where id_vehicle ='" + e.getId_vehicle() + "'"
+                    + "AND id_vehicle='"+e.getId_vehicle()+"' ");
             if (!rs.next()) {
                 PreparedStatement prd = db_cnx.connect().prepareStatement(req);
                 prd.setString(1, e.getId_person());

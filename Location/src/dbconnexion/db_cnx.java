@@ -11,7 +11,6 @@ public class db_cnx {
     private static String driver;
     private static String user;
     private static String password;
-    public static int identifier;
     public static String username;
 
     public static void connecter() {
