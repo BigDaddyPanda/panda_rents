@@ -67,7 +67,7 @@ public class LoginController implements Initializable {
             try {
                 page2 = fxmlLoader.load();
             } catch (IOException ex) {
-                System.err.println("FXMLLoad Faggot");
+                System.err.println("FXMLLoad ERROR");
             }
             
             Scene scene2 = new Scene(page2);

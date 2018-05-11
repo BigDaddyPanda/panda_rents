@@ -4,8 +4,9 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
@@ -25,9 +26,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LandingController">
+<AnchorPane id="AnchorPane" fx:id="LANDINGAP" prefHeight="539.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LandingController">
    <children>
-      <AnchorPane fx:id="mainPane">
+      <AnchorPane fx:id="mainPane" onMouseClicked="#hidePanes">
          <children>
             <ScrollPane fx:id="displaySP" layoutX="196.0" layoutY="126.0" prefHeight="409.0" prefWidth="854.0" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="2.0">
                <content>
@@ -51,7 +52,7 @@
                                     <Image url="@../../pictures/carpic/nocar.jpg" />
                                  </image>
                               </ImageView>
-                              <BorderPane prefHeight="43.0" prefWidth="239.0" style="-fx-background-color: Grey;">
+                              <BorderPane fx:id="buttomBtns" prefHeight="43.0" prefWidth="239.0" style="-fx-background-color: Grey;">
                                  <left>
                                     <Button fx:id="modifyCarBtn" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
                                  </left>
@@ -63,48 +64,6 @@
                                  </center>
                               </BorderPane>
                            </children>
-                        </VBox>
-                        <VBox fx:id="defaultCarPreviewVB1" prefHeight="223.0" prefWidth="237.0" style="-fx-background-color: black;" visible="false">
-                           <children>
-                              <Pane prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: grey;">
-                                 <children>
-                                    <Label fx:id="carNameLabel1" layoutX="14.0" layoutY="5.0" prefHeight="17.0" prefWidth="202.0" text="Ford-Mustang">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <AnchorPane prefHeight="145.0" prefWidth="237.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <ImageView fx:id="previewCarIV1" fitHeight="140.0" fitWidth="250.0" layoutX="5.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
-                                       <viewport>
-                                          <Rectangle2D />
-                                       </viewport>
-                                       <image>
-                                          <Image url="@../../pictures/carpic/nocar.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </AnchorPane>
-                              <BorderPane prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: Grey;">
-                                 <left>
-                                    <Button fx:id="modifyCarBtn1" mnemonicParsing="false" onAction="#modifyCar" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #31ccec;" text="Modify" BorderPane.alignment="CENTER" />
-                                 </left>
-                                 <right>
-                                    <Button fx:id="rentCarBtn1" mnemonicParsing="false" onAction="#rentCar" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #26a69a;" text="Rent it!" BorderPane.alignment="CENTER" />
-                                 </right>
-                                 <center>
-                                    <RadioButton fx:id="isRent1" mnemonicParsing="false" selected="true" style="-fx-selected-color: red;" textFill="WHITE" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </children>
-                           <TilePane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </TilePane.margin>
                         </VBox>
                      </children>
                   </TilePane>
@@ -130,9 +89,9 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <TextField layoutX="392.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Series: RX-8" />
-                  <TextField layoutX="27.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Immatricule: ie 42TN069" />
-                  <TextField layoutX="208.0" layoutY="99.0" prefHeight="26.0" prefWidth="154.0" promptText="By Brand: ie Ford" />
+                  <TextField fx:id="filterCarBySerie" layoutX="392.0" layoutY="99.0" onAction="#filterCarBy" prefHeight="26.0" prefWidth="154.0" promptText="By Series: RX-8" />
+                  <TextField fx:id="filterCarByImmBtn" layoutX="27.0" layoutY="99.0" onAction="#filterCarBy" prefHeight="26.0" prefWidth="154.0" promptText="By Immatricule: ie 42TN069" />
+                  <TextField fx:id="filterCarByBrand" layoutX="208.0" layoutY="99.0" onAction="#filterCarBy" prefHeight="26.0" prefWidth="154.0" promptText="By Brand: ie Ford" />
                   <Text layoutX="27.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Cars" wrappingWidth="102.07812118530273">
                      <font>
                         <Font size="20.0" />
@@ -150,8 +109,7 @@
                   <Separator layoutX="15.0" layoutY="52.0" prefHeight="0.0" prefWidth="162.0" />
                   <Button fx:id="addCustomerBtn" layoutX="36.0" layoutY="117.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="25.0" prefWidth="124.0" text="Add Customer" />
                   <Button fx:id="addVehicleBtn" layoutX="36.0" layoutY="84.0" mnemonicParsing="false" onAction="#addVehicle" prefHeight="25.0" prefWidth="124.0" text="Add Vehicle" />
-                  <Button fx:id="addEmployeeBtn" layoutX="36.0" layoutY="150.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="25.0" prefWidth="124.0" text="Add Employee" />
-                  <AnchorPane layoutX="14.0" layoutY="183.41796875">
+                  <AnchorPane layoutX="14.0" layoutY="156.0" prefHeight="370.0" prefWidth="164.0">
                      <children>
                         <Text fill="#f2eaea" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="102.07812118530273">
                            <font>
@@ -159,12 +117,12 @@
                            </font>
                         </Text>
                         <TextField fx:id="clientFilterTF" layoutX="2.0" layoutY="31.58203125" onAction="#filterClients" opacity="0.61" prefHeight="26.0" prefWidth="162.0" promptText="Search a Person" />
-                        <ScrollPane layoutX="2.0" layoutY="61.58203125" prefHeight="281.0" prefWidth="162.0" style="-fx-background-color: transparent;">
+                        <ScrollPane layoutX="2.0" layoutY="62.0" prefHeight="309.0" prefWidth="162.0" style="-fx-background-color: transparent;">
                            <content>
-                              <TableView prefHeight="294.0" prefWidth="158.0">
+                              <TableView fx:id="personsTV" prefHeight="310.0" prefWidth="147.0">
                                 <columns>
-                                  <TableColumn prefWidth="26.399993896484375" text="#" />
-                                  <TableColumn prefWidth="131.19999923706055" text="Name" />
+                                  <TableColumn fx:id="isAdminTC" prefWidth="26.399993896484375" text="#" />
+                                  <TableColumn fx:id="personNameTC" prefWidth="131.19999923706055" text="Name" />
                                 </columns>
                               </TableView>
                            </content>
@@ -175,13 +133,12 @@
             </Pane>
          </children>
       </AnchorPane>
-      <Pane fx:id="carPane" layoutX="316.0" layoutY="126.0" prefHeight="341.0" prefWidth="422.0" style="-fx-background-color: #d1d2d2;" visible="false">
+      <Pane fx:id="carPane" layoutX="316.0" layoutY="126.0" prefHeight="341.0" prefWidth="422.0" style="-fx-background-color: #d1d2d2;">
          <children>
             <TextField fx:id="immatriculeTF" layoutX="24.0" layoutY="48.0" prefHeight="25.0" prefWidth="178.0" promptText="Immatricule" />
             <TextField fx:id="constructorTF" layoutX="24.0" layoutY="94.0" prefHeight="25.0" prefWidth="178.0" promptText="Constructor" />
             <TextField fx:id="modelTF" layoutX="24.0" layoutY="144.0" prefHeight="25.0" prefWidth="178.0" promptText="Model" />
             <TextField fx:id="speedTF" layoutX="24.0" layoutY="196.0" prefHeight="25.0" prefWidth="49.0" promptText="Speed" />
-            <ColorPicker fx:id="colorTF" layoutX="86.0" layoutY="196.0" prefHeight="25.0" prefWidth="114.0" />
             <RadioButton fx:id="dieselRB" layoutX="30.0" layoutY="251.0" mnemonicParsing="false" text="Diesel" />
             <RadioButton fx:id="gazRB" layoutX="92.0" layoutY="251.0" mnemonicParsing="false" text="Gas" />
             <RadioButton fx:id="electricRB" layoutX="143.0" layoutY="251.0" mnemonicParsing="false" text="Electric" />
@@ -191,8 +148,10 @@
                </children>
             </AnchorPane>
             <Button fx:id="uploadBtn" layoutX="268.0" layoutY="240.0" mnemonicParsing="false" onAction="#uploadCarPreview" prefHeight="25.0" prefWidth="80.0" text="Photo" />
-          <Button fx:id="confirmCarBtn" layoutX="268.0" layoutY="302.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
-            <Button fx:id="cancelCar" layoutX="348.0" layoutY="302.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ef9a9a;" text="Annuler" />
+          <Button fx:id="confirmCarBtn" layoutX="339.0" layoutY="302.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
+            <Button fx:id="cancelCar" layoutX="391.0" layoutY="2.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #ef9a9a;" text="X" />
+            <TextField fx:id="seatsTF" layoutX="83.0" layoutY="196.0" prefHeight="25.0" prefWidth="23.0" promptText="Speed" />
+            <TextField fx:id="colorTF" layoutX="119.0" layoutY="196.0" prefHeight="25.0" prefWidth="80.0" promptText="Speed" />
          </children>
       </Pane>
       <Pane fx:id="personPane" layoutX="263.0" layoutY="125.0" prefHeight="341.0" prefWidth="534.0" style="-fx-background-color: #d1d2d2;" visible="false">
@@ -217,9 +176,28 @@
                </children>
             </AnchorPane>
             <Button fx:id="userUploadBtn" layoutX="361.0" layoutY="269.0" mnemonicParsing="false" onAction="#uploadCarPreview" prefHeight="25.0" prefWidth="80.0" text="Photo" />
-            <Button fx:id="confirmCarBtn1" layoutX="441.0" layoutY="313.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
-            <Button fx:id="cancelCar1" layoutX="377.0" layoutY="314.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ef9a9a;" text="Annuler" />
+            <Button fx:id="confirmCarBtn1" layoutX="455.0" layoutY="304.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
             <PasswordField fx:id="passwordTF" layoutX="160.0" layoutY="98.0" prefHeight="25.0" prefWidth="122.0" promptText="Password" />
+            <Button fx:id="cancelCar1" layoutX="508.0" layoutY="4.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ef9a9a;" text="X" />
+         </children>
+      </Pane>
+      <Pane fx:id="rentaCarPane" layoutX="375.0" layoutY="181.0" prefHeight="192.0" prefWidth="447.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <ChoiceBox fx:id="renterCB" layoutX="37.0" layoutY="44.0" prefHeight="25.0" prefWidth="178.0" />
+            <ChoiceBox fx:id="availableCarsCB" layoutX="232.0" layoutY="44.0" prefHeight="25.0" prefWidth="178.0" />
+            <DatePicker fx:id="rentStartDate" layoutX="40.0" layoutY="86.0" promptText="Start Date" />
+            <DatePicker fx:id="rentEndDate" layoutX="40.0" layoutY="127.0" promptText="End Date" />
+            <TextField fx:id="rentPrice" alignment="CENTER_RIGHT" layoutX="349.0" layoutY="81.0" prefHeight="25.0" prefWidth="49.0" text="5000" />
+            <CheckBox fx:id="confirmEULA" layoutX="192.0" layoutY="170.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="131.0" />
+            <Button fx:id="confirmRent" layoutX="323.0" layoutY="166.0" mnemonicParsing="false" onAction="#confirmRent" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #26a69a;" text="CONFIRM RENT" />
+            <Hyperlink layoutX="215.0" layoutY="167.0" text="I have read EULA" underline="true" />
+            <Label focusTraversable="false" layoutX="37.0" layoutY="21.0" text="Persons" />
+            <Label focusTraversable="false" layoutX="313.0" layoutY="85.0" text="Price" />
+            <Label focusTraversable="false" layoutX="232.0" layoutY="21.0" prefHeight="17.0" prefWidth="97.0" text="Available Cars" />
+            <Label focusTraversable="false" layoutX="405.0" layoutY="85.0" text="\$" />
+            <Text fill="#085982" layoutX="241.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning:                         All delay beyond End date will cost 10% of the Price each day" textAlignment="JUSTIFY" wrappingWidth="142.41210897266865" />
+            <Button fx:id="cancelCar11" layoutX="419.0" layoutY="1.0" mnemonicParsing="false" onAction="#cancel" prefWidth="28.0" style="-fx-background-color: #ef9a9a;" text="X" />
+            <Button fx:id="confirmRent1" layoutX="2.0" layoutY="166.0" mnemonicParsing="false" onAction="#destroyRent" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #f00;" text="Cancel Rent" />
          </children>
       </Pane>
    </children>
