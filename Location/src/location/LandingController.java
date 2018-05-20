@@ -7,8 +7,8 @@ package location;
 
 import dbconnexion.Auth;
 import entities.Car;
-import entities.Creation;
-import entities.Display;
+import logic.Creation;
+import logic.Display;
 import entities.Person;
 import entities.Rental;
 import java.io.File;

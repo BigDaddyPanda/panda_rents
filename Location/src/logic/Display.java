@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package logic;
 
 import dbconnexion.db_cnx;
+import entities.Car;
+import entities.Person;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +32,7 @@ public class Display {
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("image"),
-                        rs.getDate("birth"),
+                        rs.getString("birth"),
                         rs.getBoolean("isAdmin")));
             }
         } catch (SQLException e) {
@@ -52,7 +54,7 @@ public class Display {
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("image"),
-                        rs.getDate("birth"),
+                        rs.getString("birth"),
                         rs.getBoolean("isAdmin")));
             }
         } catch (SQLException e) {
@@ -118,5 +120,8 @@ public class Display {
         ArrayList<Car> RP = loadRentedCars();
         P.removeAll(RP);
         return P;
+    }
+    public static void main(String[] args) {
+        System.out.println(load_Available_Cars());
     }
 }

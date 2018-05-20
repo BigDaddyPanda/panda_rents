@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -25,10 +24,10 @@ public class Person {
     String id_person, name, fname, phone, username, password, image;
     SimpleStringProperty FullName;
     SimpleStringProperty Adminship;
-    Date birth;
+    String birth;
     boolean isAdmin;
 
-    public Person(String id_person, String name, String fname, String phone, String username, String password, String image, Date birth, boolean isAdmin) {
+    public Person(String id_person, String name, String fname, String phone, String username, String password, String image, String birth, boolean isAdmin) {
         this.id_person = id_person;
         this.name = name;
         this.fname = fname;
@@ -118,7 +117,7 @@ public class Person {
         return image;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
@@ -154,7 +153,7 @@ public class Person {
         this.image = image;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package logic;
 
 import dbconnexion.db_cnx;
+import entities.Car;
+import entities.Person;
+import entities.Rental;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +36,7 @@ public class Creation {
     public static boolean addCar(Car e) {
         try {
             String req = "INSERT INTO `vehicles` (`id_vehicle`, `constructeur`, `modele`, `vitesse`, `color`, `seats`, `energy`, `image`) \n"
-                    + "    VALUES ('?', '?', '?', '?', '?', '?', '?', '?')";
+                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             Statement st = db_cnx.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from vehicles where id_vehicle='" + e.getId_vehicle() + "'");
             if (!rs.next()) {
@@ -51,7 +54,7 @@ public class Creation {
             }
         } catch (SQLException ex) {
             //Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Another one!");
+            System.out.println("Another one! at  addCar");
         }
         return false;
 
@@ -61,16 +64,17 @@ public class Creation {
         try {
             String req = "INSERT INTO `persons` (`id_person`, `name`, `fname`, `phone`,"
                     + "    `birth`, `username`, `password`, `image`, `isAdmin`)"
-                    + "    VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?')";
+                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             Statement st = db_cnx.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from vehicles where id_vehicle='" + e.getId_person() + "'");
             if (!rs.next()) {
                 PreparedStatement prd = db_cnx.connect().prepareStatement(req);
+                
                 prd.setString(1, e.getId_person());
                 prd.setString(2, e.getName());
                 prd.setString(3, e.getFname());
                 prd.setString(4, e.getPhone());
-                prd.setDate(5, new Date(e.getBirth().getTime()));
+                prd.setString(5, e.getBirth());
                 prd.setString(6, e.getUsername());
                 prd.setString(7, e.getPassword());
                 prd.setString(8, e.getImage());
@@ -80,7 +84,8 @@ public class Creation {
             }
         } catch (SQLException ex) {
             //Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Another one!");
+            System.out.println("Another one! at  addPerson");
+            ex.printStackTrace();
         }
         return false;
 
@@ -89,7 +94,7 @@ public class Creation {
     public static boolean addRental(Rental e) {
         try {
             String req = "INSERT INTO `rent` (`id_person`, `id_vehicle`, `start`, `end`, `price`, `fees`)"
-                    + " VALUES ('?', '?', '?', '?', '?', '?')";
+                    + " VALUES (?, ?, ?, ?, ?, ?)";
             Statement st = db_cnx.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from rent where id_vehicle ='" + e.getId_vehicle() + "'"
                     + "AND id_vehicle='"+e.getId_vehicle()+"' ");
@@ -105,8 +110,7 @@ public class Creation {
                 return true;
             }
         } catch (SQLException ex) {
-            //Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Another one!");
+            System.out.println("Another one! at  addRental");
         }
         return false;
 
@@ -114,5 +118,8 @@ public class Creation {
 //    public static void main(String[] args) {
 //        Rental e=new Rental("45177392", "620TN8078","2008-08-08","2008-08-08", 0, 0);
 //        System.out.println(addRental(e));
+//        Person p = new Person("a", "s", "", "", "", "", "", "2018-05-01", true);
+//        System.out.println(p);
+//        System.out.println(addPerson(p));
 //    }
 }
