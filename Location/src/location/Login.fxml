@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="loginAP" maxHeight="317.0" maxWidth="500.0" prefHeight="317.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LoginController">
+<AnchorPane id="AnchorPane" fx:id="loginAP" maxHeight="375.0" maxWidth="600.0" onDragDetected="#move" prefHeight="375.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="location.LoginController">
     <children>
-      <ImageView fx:id="loginbg" cache="true" fitHeight="317.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="loginbg" cache="true" fitHeight="407.0" fitWidth="600.0" opacity="0.78" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../pictures/carpic/login.jpeg" />
          </image>
@@ -19,11 +22,54 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Pane layoutX="299.0" layoutY="69.0" opacity="0.84" prefHeight="178.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;" AnchorPane.rightAnchor="40.0">
+      <Pane fx:id="loginPane" layoutX="391.0" layoutY="111.0" prefHeight="199.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;" AnchorPane.rightAnchor="41.0">
          <children>
-            <TextField fx:id="usernameTF" layoutX="10.0" layoutY="37.0" promptText="Login" />
-            <PasswordField fx:id="pwTF" layoutX="10.0" layoutY="89.0" promptText="Password" />
-            <Button fx:id="loginBtn" layoutX="40.0" layoutY="139.0" onAction="#login" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #192556;" text="Login" textFill="WHITE" />
+            <Pane fx:id="errorPane" layoutX="6.0" layoutY="21.0" prefHeight="107.0" prefWidth="156.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="-5.0" text="Bad Entries" textAlignment="CENTER" textFill="RED" />
+                  <Pane layoutY="27.0" opacity="0.57" prefHeight="30.0" prefWidth="156.0" style="-fx-background-color: red;" />
+                  <Pane layoutY="62.0" opacity="0.57" prefHeight="30.0" prefWidth="156.0" style="-fx-background-color: red;" />
+               </children>
+            </Pane>
+            <TextField fx:id="usernameTF" layoutX="9.0" layoutY="50.0" onInputMethodTextChanged="#removeErrorP" onMouseEntered="#removeErrorP" promptText="Login" />
+            <PasswordField fx:id="pwTF" layoutX="10.0" layoutY="85.0" onInputMethodTextChanged="#removeErrorP" promptText="Password" />
+            <Button fx:id="loginBtn" layoutX="40.0" layoutY="129.0" onAction="#login" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #192556;" text="Login" textFill="WHITE" />
+            <Label fx:id="signupL" layoutX="62.0" layoutY="161.0" onMouseClicked="#loadsignup" text="Sign up " textFill="#393131" underline="true" />
+         </children>
+      </Pane>
+      <ImageView fx:id="logo" fitHeight="83.0" fitWidth="226.0" layoutX="434.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../pictures/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="exitBtn" graphicTextGap="0.0" layoutX="569.0" layoutY="1.0" onAction="#exit" prefHeight="10.0" prefWidth="29.0" style="-fx-background-color: #bf5c5c;" text="X" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <padding>
+            <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+         </padding></Button>
+      <Pane fx:id="signupPane" layoutX="392.0" layoutY="107.0" prefHeight="242.0" prefWidth="168.0" style="-fx-background-color: #5e6a9afa;" visible="false">
+         <children>
+            <Pane fx:id="sErrP" layoutX="6.0" layoutY="12.0" prefHeight="91.0" prefWidth="156.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="19.0" layoutY="-1.0" text="Entries Already Existing" textAlignment="CENTER" textFill="RED" />
+                  <Pane layoutY="17.0" opacity="0.57" prefHeight="35.0" prefWidth="156.0" style="-fx-background-color: red;" />
+                  <Pane layoutY="53.0" opacity="0.57" prefHeight="35.0" prefWidth="156.0" style="-fx-background-color: red;" />
+               </children>
+            </Pane>
+            <Pane fx:id="passErrP" layoutX="6.0" layoutY="134.0" prefHeight="49.0" prefWidth="156.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="23.0" layoutY="35.0" text="Password missmatch" textAlignment="CENTER" textFill="RED" />
+                  <Pane layoutY="3.0" opacity="0.57" prefHeight="35.0" prefWidth="156.0" style="-fx-background-color: red;" />
+               </children>
+            </Pane>
+            <TextField fx:id="scinTF" layoutX="10.0" layoutY="34.0" onMouseEntered="#removesErrorP" promptText="CIN" />
+            <TextField fx:id="susernameTF" layoutX="10.0" layoutY="70.0" onMouseEntered="#removesErrorP" promptText="Login" />
+            <PasswordField fx:id="spwTF" layoutX="10.0" layoutY="106.0" promptText="Password" />
+            <PasswordField fx:id="scpwTF" layoutX="10.0" layoutY="142.0" promptText="Re-Type Password" />
+            <Button fx:id="signupBtn" layoutX="39.0" layoutY="185.0" onAction="#signup" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #192556;" text="Sign up " textFill="WHITE" />
+            <Label fx:id="loginL" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="213.0" onMouseClicked="#loadlogin" text="Login" textFill="#393131" underline="true" />
          </children>
       </Pane>
     </children>

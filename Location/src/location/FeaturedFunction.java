@@ -29,7 +29,19 @@ public class FeaturedFunction {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
-        System.out.println("SDQSKDKSDN");
+        System.out.println("Ouch can't create this image");
+        return null;
+    }
+    public static Image createImage(String src) {
+        File imageFile = new File(Auth.image_directory+ src);
+
+        try {
+            return new Image(new FileInputStream(imageFile));
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Ouch this imageview can't be viewed");
         return null;
     }
 

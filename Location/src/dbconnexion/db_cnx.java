@@ -36,11 +36,13 @@ public class db_cnx {
     }
 
     static public void deconnecter() {
-        try {
-            connecter.close();
+        if (connecter != null) {
+            try {
+                connecter.close();
 
-        } catch (SQLException e) {
-            System.out.println(e);
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
 

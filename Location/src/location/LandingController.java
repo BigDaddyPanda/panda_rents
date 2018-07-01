@@ -6,6 +6,7 @@
 package location;
 
 import dbconnexion.Auth;
+import dbconnexion.db_cnx;
 import entities.Car;
 import logic.Creation;
 import logic.Display;
@@ -26,12 +27,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -127,6 +130,12 @@ public class LandingController implements Initializable {
     private AnchorPane LANDINGAP;
     @FXML
     private TextField seatsTF;
+    @FXML
+    private Button addRent;
+    @FXML
+    private Button exitBtn;
+
+    ToggleGroup etg = new ToggleGroup(), gtg = new ToggleGroup();
 
     String imageurl;
     /**
@@ -135,10 +144,24 @@ public class LandingController implements Initializable {
     ArrayList<Person> P, AllP, AP;
     ArrayList<Car> AllC, C, AC, RC;
     @FXML
-    private Button addRent;
+    private ProgressIndicator carConfirmPB,rentConfirmPB,personConfirmPB;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        dieselRB.setToggleGroup(etg);
+        dieselRB.setUserData("Diesel");
+        dieselRB.setSelected(true);
+        gazRB.setToggleGroup(etg);
+        gazRB.setUserData("Gas");
+        electricRB.setToggleGroup(etg);
+        electricRB.setUserData("Electric");
+        System.out.println(etg);
+
+        isMrRB.setToggleGroup(gtg);
+        isMrRB.setSelected(true);
+        isMrsRB.setToggleGroup(gtg);
+
         // TODO
         userNameLabel.setText(Auth.USERNAME);
         userIV = FeaturedFunction.createImageView("userpic/boss.png", 70, 70);
@@ -152,7 +175,7 @@ public class LandingController implements Initializable {
 
         RC = Display.loadRentedCars();
         for (Person p : AP) {
-            renterCB.getItems().addAll(p.getFullName()+ ":" + p.getId_person());
+            renterCB.getItems().addAll(p.getFullName() + ":" + p.getId_person());
 
         }
         for (Car c : AC) {
@@ -168,13 +191,9 @@ public class LandingController implements Initializable {
 //            VBox v = defaultCarPreviewVB;
 //            System.out.println(defaultCarPreviewVB.getChildren().toString());
 //        }
-//        for (Car c : C) {
-//            VBox v = new VBox();
-//            v = defaultCarPreviewVB;
-//            ((Button) (v.getChildren().get(0))).setVisible(Auth.ISADMIN);
-//            ((Label) (v.getChildren().get(1))).setText(c.getConstructeur() + " " + c.getModele());
-//            ((Button) (v.getChildren().get(3))).setDisable(RC.contains(c));
-//        }
+        for (Car c : C) {
+            System.out.println(defaultCarPreviewVB.toString());
+        }
         isAdminTC.setCellValueFactory(new PropertyValueFactory<Person, String>("Adminship"));
         ObservableList<Person> PersonsA = FXCollections.observableArrayList(P);
         personNameTC.setCellValueFactory(new PropertyValueFactory<Person, String>("FullName"));
@@ -255,9 +274,10 @@ public class LandingController implements Initializable {
 
     @FXML
     private void confirmCar(ActionEvent event) {
+//        System.out.println(etg.getSelectedToggle().getUserData().toString());
         Creation.addCar(new Car(immatriculeTF.getText(), constructorTF.getText(),
                 modelTF.getText(), Integer.parseInt(speedTF.getText()), colorTF.getText(),
-                Integer.parseInt(seatsTF.getText()), "Diesel", imageurl));
+                Integer.parseInt(seatsTF.getText()), etg.getSelectedToggle().getUserData().toString(), imageurl));
     }
 
     @FXML
@@ -290,9 +310,9 @@ public class LandingController implements Initializable {
     @FXML
     private void confirmRent(ActionEvent event) {
         float x = Float.parseFloat(rentPrice.getText());
-        System.out.println(renterCB.getSelectionModel().getSelectedItem().split(":")[1]+"-"
-                + availableCarsCB.getSelectionModel().getSelectedItem().split(":")[1]+"-"
-                + rentStartDate.getValue().toString().length()+"-" + rentStartDate.getValue().toString());
+        System.out.println(renterCB.getSelectionModel().getSelectedItem().split(":")[1] + "-"
+                + availableCarsCB.getSelectionModel().getSelectedItem().split(":")[1] + "-"
+                + rentStartDate.getValue().toString().length() + "-" + rentStartDate.getValue().toString());
         System.out.println(Creation.addRental(
                 new Rental(renterCB.getSelectionModel().getSelectedItem(),
                         availableCarsCB.getSelectionModel().getSelectedItem(),
@@ -302,6 +322,12 @@ public class LandingController implements Initializable {
 
     @FXML
     private void destroyRent(ActionEvent event) {
+    }
+
+    @FXML
+    private void exit(ActionEvent event) {
+        db_cnx.deconnecter();
+        System.exit(0);
     }
 
 }

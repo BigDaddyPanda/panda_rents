@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import logic.Creation;
 
 /**
  *
@@ -26,6 +27,18 @@ public class Person {
     SimpleStringProperty Adminship;
     String birth;
     boolean isAdmin;
+
+    public Person(String id_person, String username, String password) {
+        this.id_person = id_person;
+        this.username = username;
+        this.password = password;
+        this.name = "Foulen";
+        this.fname = "Foulen";
+        this.phone = "00-000-000";
+        this.image = "logo.png";
+        this.birth = "2000-01-01";
+        this.isAdmin = false;
+    }
 
     public Person(String id_person, String name, String fname, String phone, String username, String password, String image, String birth, boolean isAdmin) {
         this.id_person = id_person;
@@ -55,6 +68,25 @@ public class Person {
     `birth`, `username`, `password`, `image`, `isAdmin`) 
     VALUES ('', '', '', '', '', '', '', '', '')
      */
+    public static boolean signup(Person p) {
+        try {
+            PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM persons "
+                    + "WHERE id_person = '" + p.getId_person() + "' "
+                    + "OR username= '" + p.getUsername() + "'");
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Bad kitten not doing well at signup");
+            e.printStackTrace();
+        }
+        if (Creation.addPerson(p)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean authentificate(String login, String password) {
         try {
             PreparedStatement st = db_cnx.connect().prepareStatement("SELECT * FROM persons WHERE username = '" + login + "' AND password= '" + password + "'");
@@ -67,7 +99,7 @@ public class Person {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println("XZS");
+            System.out.println("Bad kitten not doing well at authentificate");
             e.printStackTrace();
         }
         return false;

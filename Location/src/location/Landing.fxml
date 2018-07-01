@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -87,6 +88,14 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
+                  <Button fx:id="exitBtn" graphicTextGap="0.0" layoutX="825.0" layoutY="2.0" onAction="#exit" prefHeight="10.0" prefWidth="29.0" style="-fx-background-color: #bf5c5c;" text="X" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+                     </padding>
+                  </Button>
                </children>
             </AnchorPane>
             <Pane prefHeight="539.0" prefWidth="195.0" style="-fx-background-color: #1f23a1;" AnchorPane.leftAnchor="0.0">
@@ -107,9 +116,9 @@
                            </font>
                         </Text>
                         <TextField fx:id="clientFilterTF" layoutX="2.0" layoutY="31.58203125" onAction="#filterClients" opacity="0.61" prefHeight="26.0" prefWidth="162.0" promptText="Search a Person" />
-                        <ScrollPane layoutX="2.0" layoutY="62.0" prefHeight="309.0" prefWidth="162.0" style="-fx-background-color: transparent;">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="62.0" prefHeight="309.0" prefWidth="162.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                            <content>
-                              <TableView fx:id="personsTV" prefHeight="310.0" prefWidth="147.0">
+                              <TableView fx:id="personsTV" prefHeight="310.0" prefWidth="160.0">
                                 <columns>
                                   <TableColumn fx:id="isAdminTC" prefWidth="26.399993896484375" text="#" />
                                   <TableColumn fx:id="personNameTC" prefWidth="131.19999923706055" text="Name" />
@@ -124,7 +133,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <Pane fx:id="carPane" layoutX="316.0" layoutY="126.0" prefHeight="341.0" prefWidth="422.0" style="-fx-background-color: #d1d2d2;" visible="false">
+      <Pane fx:id="carPane" layoutX="389.0" layoutY="126.0" prefHeight="341.0" prefWidth="422.0" style="-fx-background-color: #d1d2d2;" visible="false">
          <children>
             <TextField fx:id="immatriculeTF" layoutX="24.0" layoutY="48.0" prefHeight="25.0" prefWidth="178.0" promptText="Immatricule" />
             <TextField fx:id="constructorTF" layoutX="24.0" layoutY="94.0" prefHeight="25.0" prefWidth="178.0" promptText="Constructor" />
@@ -140,12 +149,20 @@
             </AnchorPane>
             <Button fx:id="uploadBtn" layoutX="268.0" layoutY="240.0" mnemonicParsing="false" onAction="#uploadCarPreview" prefHeight="25.0" prefWidth="80.0" text="Photo" />
           <Button fx:id="confirmCarBtn" layoutX="339.0" layoutY="302.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
-            <Button fx:id="cancelCar" layoutX="391.0" layoutY="2.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: #ef9a9a;" text="X" />
+            <Button fx:id="cancelCar" layoutX="391.0" layoutY="2.0" mnemonicParsing="false" onAction="#cancel" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ef9a9a;" text="X" textFill="WHITE">
+               <padding>
+                  <Insets top="-1.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
             <TextField fx:id="seatsTF" layoutX="83.0" layoutY="196.0" prefHeight="25.0" prefWidth="23.0" promptText="Speed" />
             <TextField fx:id="colorTF" layoutX="119.0" layoutY="196.0" prefHeight="25.0" prefWidth="80.0" promptText="Speed" />
+            <ProgressIndicator fx:id="carConfirmPB" layoutX="146.0" layoutY="79.0" prefHeight="192.0" prefWidth="131.0" visible="false" />
          </children>
       </Pane>
-      <Pane fx:id="personPane" layoutX="263.0" layoutY="125.0" prefHeight="341.0" prefWidth="534.0" style="-fx-background-color: #d1d2d2;" visible="false">
+      <Pane fx:id="personPane" layoutX="328.0" layoutY="125.0" prefHeight="341.0" prefWidth="534.0" style="-fx-background-color: #d1d2d2;" visible="false">
          <children>
             <Label focusTraversable="false" layoutX="27.0" layoutY="14.0" prefHeight="30.0" prefWidth="195.0" text="Adding New Person">
                <font>
@@ -169,7 +186,15 @@
             <Button fx:id="userUploadBtn" layoutX="361.0" layoutY="269.0" mnemonicParsing="false" onAction="#uploadCarPreview" prefHeight="25.0" prefWidth="80.0" text="Photo" />
             <Button fx:id="confirmCarBtn1" layoutX="455.0" layoutY="304.0" mnemonicParsing="false" onAction="#confirmCar" style="-fx-background-color: #26a69a;" text="Confirmer" />
             <PasswordField fx:id="passwordTF" layoutX="160.0" layoutY="98.0" prefHeight="25.0" prefWidth="122.0" promptText="Password" />
-            <Button fx:id="cancelCar1" layoutX="508.0" layoutY="4.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ef9a9a;" text="X" />
+            <Button fx:id="cancelCar1" layoutX="502.0" layoutY="4.0" mnemonicParsing="false" onAction="#cancel" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ef9a9a;" text="X" textFill="WHITE">
+               <padding>
+                  <Insets top="-1.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <ProgressIndicator fx:id="personConfirmPB" layoutX="245.0" layoutY="92.0" prefHeight="192.0" prefWidth="131.0" visible="false" />
          </children>
       </Pane>
       <Pane fx:id="rentaCarPane" layoutX="375.0" layoutY="181.0" prefHeight="192.0" prefWidth="447.0" style="-fx-background-color: white;" visible="false">
@@ -187,8 +212,15 @@
             <Label focusTraversable="false" layoutX="232.0" layoutY="21.0" prefHeight="17.0" prefWidth="97.0" text="Available Cars" />
             <Label focusTraversable="false" layoutX="405.0" layoutY="85.0" text="\$" />
             <Text fill="#085982" layoutX="241.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning:                         All delay beyond End date will cost 10% of the Price each day" textAlignment="JUSTIFY" wrappingWidth="142.41210897266865" />
-            <Button fx:id="cancelCar11" layoutX="419.0" layoutY="1.0" mnemonicParsing="false" onAction="#cancel" prefWidth="28.0" style="-fx-background-color: #ef9a9a;" text="X" />
-            <Button fx:id="confirmRent1" layoutX="2.0" layoutY="166.0" mnemonicParsing="false" onAction="#destroyRent" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #f00;" text="Cancel Rent" />
+            <Button fx:id="cancelCar11" layoutX="417.0" layoutY="1.0" mnemonicParsing="false" onAction="#cancel" prefHeight="27.0" prefWidth="29.0" style="-fx-background-color: #ef9a9a;" text="X" textFill="WHITE">
+               <padding>
+                  <Insets top="-1.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Button>
+            <Button fx:id="confirmRent1" layoutY="166.0" mnemonicParsing="false" onAction="#destroyRent" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #f00;" text="Cancel Rent" />
+            <ProgressIndicator fx:id="rentConfirmPB" layoutX="197.0" layoutY="63.0" prefHeight="78.0" prefWidth="53.0" visible="false" />
          </children>
       </Pane>
    </children>
